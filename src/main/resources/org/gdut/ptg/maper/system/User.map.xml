@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
-<mapper namespace="com.keda.ptg.model.system.User">
-	<resultMap id="User" type="com.keda.ptg.model.system.User">
+<mapper namespace="org.gdut.ptg.model.system.User">
+	<resultMap id="User" type="org.gdut.ptg.model.system.User">
 		<id property="id" column="ID_" jdbcType="VARCHAR"/>
 		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
 		<result property="password" column="PASSWORD" jdbcType="VARCHAR"/>
@@ -19,7 +19,7 @@
 		</where>
 	</sql>
 
-	<insert id="add" parameterType="com.keda.ptg.model.system.User">
+	<insert id="add" parameterType="org.gdut.ptg.model.system.User">
 		INSERT INTO ptg_user
 		(ID_,USER_NAME,PASSWORD)
 		VALUES
@@ -32,7 +32,7 @@
 		ID_=#{id}
 	</delete>
 	
-	<update id="update" parameterType="com.keda.ptg.model.system.User">
+	<update id="update" parameterType="org.gdut.ptg.model.system.User">
 		UPDATE ptg_user SET
 		USER_NAME=#{userName,jdbcType=VARCHAR},
 		PASSWORD=#{password,jdbcType=VARCHAR}

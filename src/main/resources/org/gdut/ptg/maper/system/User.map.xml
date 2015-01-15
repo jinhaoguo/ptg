@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="com.keda.ptg.model.system.User">
+	<resultMap id="User" type="com.keda.ptg.model.system.User">
+		<id property="id" column="ID_" jdbcType="VARCHAR"/>
+		<result property="userName" column="USER_NAME" jdbcType="VARCHAR"/>
+		<result property="password" column="PASSWORD" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="columns">
+		ID_,USER_NAME,PASSWORD
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+			<if test="@Ognl@isNotEmpty(id)"> AND ID_  LIKE #{id}  </if>
+			<if test="@Ognl@isNotEmpty(userName)"> AND USER_NAME  LIKE #{userName}  </if>
+			<if test="@Ognl@isNotEmpty(password)"> AND PASSWORD  LIKE #{password}  </if>
+		</where>
+	</sql>
+
+	<insert id="add" parameterType="com.keda.ptg.model.system.User">
+		INSERT INTO ptg_user
+		(ID_,USER_NAME,PASSWORD)
+		VALUES
+		(#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="delById" parameterType="java.lang.Long">
+		DELETE FROM ptg_user 
+		WHERE
+		ID_=#{id}
+	</delete>
+	
+	<update id="update" parameterType="com.keda.ptg.model.system.User">
+		UPDATE ptg_user SET
+		USER_NAME=#{userName,jdbcType=VARCHAR},
+		PASSWORD=#{password,jdbcType=VARCHAR}
+		WHERE
+		ID_=#{id}
+	</update>
+		    
+	<select id="getById" parameterType="java.lang.Long" resultMap="User">
+		SELECT <include refid="columns"/>
+		FROM ptg_user
+		WHERE
+		ID_=#{id}
+	</select>
+	
+	<select id="getAll" resultMap="User">
+		SELECT <include refid="columns"/>
+		FROM ptg_user   
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ID_  desc
+		</if>
+	</select>
+</mapper>

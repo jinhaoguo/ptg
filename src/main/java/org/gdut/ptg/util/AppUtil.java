@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.ApplicationEvent;
 
 public class AppUtil implements ApplicationContextAware {
 
@@ -106,4 +107,14 @@ public class AppUtil implements ApplicationContextAware {
 		  return rootPath;
 	}
 
+	/**
+	 * spring的监听器使用，可以发布一个事件
+	 * @param event 
+	 * void
+	 * @exception 
+	 * @since  1.0.0
+	 */
+	public static void publishEvent(ApplicationEvent event){
+		applicationContext.publishEvent(event);
+	}
 }

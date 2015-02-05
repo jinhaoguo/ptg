@@ -12,8 +12,10 @@
 
 	<!-- component-scan @Component , @Controller , @Service , @Repository  -->
 
-    <context:component-scan base-package="org.gdut.*.dao" />
-	<context:component-scan base-package="org.gdut.*.service" />
+    <context:component-scan base-package="org.gdut.ptg.dao" />
+	<context:component-scan base-package="org.gdut.ptg.service" />
+	<!-- 监听器 -->
+	<context:component-scan base-package="org.gdut.ptg..*.listener" />
 
     <!--加载配置文件-->
 	<bean id="configproperties" 
@@ -33,7 +35,7 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" >
         	<list>
-        		<value>classpath:/org/gdut/*/maper/**/*.map.xml</value>
+        		<value>classpath:/org/gdut/ptg/maper/*/*.map.xml</value>
         	</list>
         </property>
 	</bean>

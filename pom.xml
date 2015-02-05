@@ -8,7 +8,6 @@
 	<activiti-version>5.15.1</activiti-version>
 	<cxf-version>2.5.2</cxf-version>
 	<spring-version>3.2.8.RELEASE</spring-version>
-	<java.home>D:/Java/jdk1.7.0_6</java.home>
   </properties>
   <dependencies>
 	<dependency>
@@ -344,13 +343,6 @@
 	  <groupId>org.logicalcobwebs</groupId>
 	  <artifactId>proxool-cglib</artifactId>
 	  <version>0.9.1</version>
-	</dependency>
-	<dependency>
-      <groupId>com.sun</groupId>
-      <artifactId>tools</artifactId>
-      <version>1.6</version>
-      <scope>system</scope>
-      <systemPath>${java.home}/lib/tools.jar</systemPath>  
 	</dependency>
 	<dependency>
 		<groupId>org.mybatis</groupId>

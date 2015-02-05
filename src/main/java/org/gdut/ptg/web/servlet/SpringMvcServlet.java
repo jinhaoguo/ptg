@@ -13,14 +13,14 @@ import org.springframework.web.servlet.DispatcherServlet;
  * 1.输入地址符合下列规则的情况的处理方法。
  *  /{1}/{2}/{3}/{4}.do
  *  对应的jsp为 /{1}/{2}/{3}{4}.jsp ,注意这里需要将{4}首字母修改为大写。
- * 	 如/gdut/system/appRole/add.do 其对应的jsp路径则为:
+ * 	 如/gdut/system/appRole/add.int 其对应的jsp路径则为:
  *   /gdut/system/appRoleAdd.jsp，
- *   /gdut/system/appRoleGrant.do,其对应的jsp路径则为
+ *   /gdut/system/appRoleGrant.int,其对应的jsp路径则为
  *   /gdut/system/appRoleGrant.jsp
  * 2.输入的地址不符合上面的规则，那么就把ht直接换成jsp。
  *   例如：
- *   /gdut/system.do -->/gdut/system.jsp
- *   /gdut.do -->/gdut.jsp
+ *   /gdut/system.int -->/gdut/system.jsp
+ *   /gdut.int -->/gdut.jsp
  *   这些jsp均放在/WEB-INF/view目录下
  *   
  *   在web.xml配置如下：
@@ -52,7 +52,7 @@ public class SpringMvcServlet extends DispatcherServlet
 		//处理RequestURI
 		String contextPath=request.getContextPath();
 		
-//		requestURI=requestURI.replace(".do", "");
+		requestURI=requestURI.replace(".int", "");
 		int cxtIndex=requestURI.indexOf(contextPath);
 		if(cxtIndex!=-1)
 		{

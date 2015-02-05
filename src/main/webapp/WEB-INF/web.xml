@@ -24,6 +24,10 @@
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.int</url-pattern>
+	</servlet-mapping>
 
     <servlet>
 	  <servlet-name>Admin</servlet-name>

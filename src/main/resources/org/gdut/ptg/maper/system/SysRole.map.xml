@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="org.gdut.ptg.dao.system.SysRoleMapper">
+	<resultMap id="SysRole" type="org.gdut.ptg.model.system.SysRole">
+		<id property="id" column="ID_" jdbcType="VARCHAR"/>
+		<result property="roleName" column="ROLE_NAME" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	<sql id="columns">
+		ID_,ROLE_NAME
+	</sql>
+	
+	<sql id="dynamicWhere">
+		<where>
+			<if test="@Ognl@isNotEmpty(id)"> AND ID_  LIKE #{id}  </if>
+			<if test="@Ognl@isNotEmpty(roleName)"> AND ROLE_NAME  LIKE #{roleName}  </if>
+		</where>
+	</sql>
+
+	<insert id="add" parameterType="org.gdut.ptg.model.system.SysRole">
+		INSERT INTO ptg_role
+		(ID_,ROLE_NAME)
+		VALUES
+		(#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="del" parameterType="java.lang.Long">
+		DELETE FROM ptg_role 
+		WHERE
+		ID_=#{id}
+	</delete>
+	
+	<update id="update" parameterType="org.gdut.ptg.model.system.SysRole">
+		UPDATE ptg_role SET
+		ROLE_NAME=#{roleName,jdbcType=VARCHAR},
+		WHERE
+		ID_=#{id}
+	</update>
+		    
+	<select id="get" parameterType="java.lang.Long" resultMap="SysRole">
+		SELECT <include refid="columns"/>
+		FROM ptg_role
+		WHERE
+		ID_=#{id}
+	</select>
+	
+	<select id="getAll" resultMap="SysRole">
+		SELECT <include refid="columns"/>
+		FROM ptg_role   
+		<include refid="dynamicWhere" />
+		<if test="@Ognl@isNotEmpty(orderField)">
+		order by ${orderField} ${orderSeq}
+		</if>
+		<if test="@Ognl@isEmpty(orderField)">
+		order by ID_  desc
+		</if>
+	</select>
+</mapper>

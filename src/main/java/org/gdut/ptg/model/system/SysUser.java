@@ -8,7 +8,7 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * 开发人员:guojh
  * 创建时间:2015-01-15 13:42:35
  */
-public class User{
+public class SysUser{
 	// ID_
 	protected String  id;
 	// USER_NAME
@@ -50,10 +50,10 @@ public class User{
 	 * @see java.lang.Object#equals(Object)
 	 */
 	public boolean equals(Object object) {
-		if (!(object instanceof User)) {
+		if (!(object instanceof SysUser)) {
 			return false;
 		}
-		User rhs = (User) object;
+		SysUser rhs = (SysUser) object;
 		return new EqualsBuilder()
 		.append(this.id, rhs.id)
 		.append(this.userName, rhs.userName)

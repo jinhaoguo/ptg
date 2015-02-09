@@ -26,7 +26,7 @@
 		(#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
 	</insert>
 	
-	<delete id="del" parameterType="java.lang.Long">
+	<delete id="del" parameterType="java.lang.String">
 		DELETE FROM ptg_user 
 		WHERE
 		ID_=#{id}
@@ -40,7 +40,7 @@
 		ID_=#{id}
 	</update>
 		    
-	<select id="get" parameterType="java.lang.Long" resultMap="SysUser">
+	<select id="get" parameterType="java.lang.String" resultMap="SysUser">
 		SELECT <include refid="columns"/>
 		FROM ptg_user
 		WHERE

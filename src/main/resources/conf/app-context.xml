@@ -6,6 +6,6 @@
        <import resource="app-resources.xml"/>
        <import resource="app-activiti.xml"/>
        <import resource="app-beans.xml"/>
-       <!-- import resource="app-security.xml"/ --> 
+       <import resource="app-shiro.xml"/>
        <import resource="app-cxf-service.xml"/>
 </beans>

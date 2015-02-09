@@ -24,7 +24,7 @@
 		(#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR})
 	</insert>
 	
-	<delete id="del" parameterType="java.lang.Long">
+	<delete id="del" parameterType="java.lang.String">
 		DELETE FROM ptg_role 
 		WHERE
 		ID_=#{id}
@@ -37,7 +37,7 @@
 		ID_=#{id}
 	</update>
 		    
-	<select id="get" parameterType="java.lang.Long" resultMap="SysRole">
+	<select id="get" parameterType="java.lang.String" resultMap="SysRole">
 		SELECT <include refid="columns"/>
 		FROM ptg_role
 		WHERE

@@ -22,7 +22,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 public class BaseService<M, D extends BaseMapper<M>> {
 	
 	private D dao;
-	protected Class<D> daoClass;
+	private Class<D> daoClass;
 
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
@@ -39,7 +39,7 @@ public class BaseService<M, D extends BaseMapper<M>> {
 		}
 	}
 	
-	public D getDao(){
+	protected D getDao(){
 		if(dao==null) {
 			dao = sqlSessionTemplate.getMapper(daoClass);
 		}

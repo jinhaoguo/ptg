@@ -3,6 +3,7 @@ package org.gdut.ptg.web.servlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.gdut.ptg.util.StringUtil;
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
@@ -17,7 +18,7 @@ import org.springframework.web.servlet.DispatcherServlet;
  *   /gdut/system/appRoleAdd.jsp，
  *   /gdut/system/appRoleGrant.int,其对应的jsp路径则为
  *   /gdut/system/appRoleGrant.jsp
- * 2.输入的地址不符合上面的规则，那么就把ht直接换成jsp。
+ * 2.输入的地址不符合上面的规则，那么就把int直接换成jsp。
  *   例如：
  *   /gdut/system.int -->/gdut/system.jsp
  *   /gdut.int -->/gdut.jsp
@@ -61,7 +62,7 @@ public class SpringMvcServlet extends DispatcherServlet
 		String[]paths=requestURI.split("[/]");
 		String jspPath=null;
 		if(paths!=null && paths.length==5){
-			jspPath="/"+paths[1] + "/" + paths[2] + "/" +paths[3] +  makeFirstLetterUpperCase(paths[4]) + ".jsp";
+			jspPath="/"+paths[1] + "/" + paths[2] + "/" +paths[3] +  StringUtil.makeFirstLetterUpperCase(paths[4]) + ".jsp";
 		}else{
 			jspPath=requestURI + ".jsp";
 		}
@@ -69,18 +70,4 @@ public class SpringMvcServlet extends DispatcherServlet
 		request.getRequestDispatcher("/WEB-INF/view"+jspPath).forward(request, response);
 	}
 	
-	/**
-	 * 把字符串的第一个字母转为大写
-	 * 
-	 * @param newStr
-	 * @return
-	 */
-	private String makeFirstLetterUpperCase(String newStr) {
-		if (newStr.length() == 0)
-			return newStr;
-		char[] oneChar = new char[1];
-		oneChar[0] = newStr.charAt(0);
-		String firstChar = new String(oneChar);
-		return (firstChar.toUpperCase() + newStr.substring(1));
-	}
 }

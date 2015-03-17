@@ -55,56 +55,18 @@ public class BeanUtils
 	 * @param o java.lang.Object.
 	 * @return boolean.
 	 */
-	@SuppressWarnings("unused")
 	public static boolean isEmpty(Object o) 
 	{
 		if (o == null)
 			return true;
-		if (o instanceof String)
-		{
-			if (((String) o).trim().length() == 0)
-			{
-				return true;
-			}
-		}
-		else if (o instanceof Collection)
-		{
-			if (((Collection) o).isEmpty())
-			{
-				return true;
-			}
-		}
-		else if (o.getClass().isArray())
-		{
-			if (((Object[]) o).length == 0)
-			{
-				return true;
-			}
-		}
-		else if (o instanceof Map)
-		{
-			if (((Map) o).isEmpty())
-			{
-				return true;
-			}
-		}
-		else if (o instanceof Long)
-		{
-			if(((Long)o)==null)
-			{
-				return true;
-			}
-		}
-		else if (o instanceof Short)
-		{
-			if(((Short)o)==null)
-			{
-				return true;
-			}
-		}
-		else
-		{
-			return false;
+		if (o instanceof String) {
+			return (((String) o).trim().length() == 0);
+		} else if (o instanceof Collection) {
+			return (((Collection) o).isEmpty());
+		} else if (o.getClass().isArray()) {
+			return (((Object[]) o).length == 0);
+		} else if (o instanceof Map) {
+			return (((Map) o).isEmpty());
 		}
 		return false;
 	
@@ -116,17 +78,10 @@ public class BeanUtils
 	 * @param c
 	 * @return
 	 */
-	public static boolean isNotEmpty(Object o)
-	{
+	public static boolean isNotEmpty(Object o) {
 		return !isEmpty(o);
 	}
 	
-	public static boolean isNotEmpty(Long o)
-	{
-		return !isEmpty(o);
-	}
-	
-
 	/**
 	 * 判断是否为数字
 	 * @param o
@@ -134,23 +89,12 @@ public class BeanUtils
 	 */
 	public static boolean isNumber(Object o)
 	{
-		if (o == null)
-			return false;
-		if (o instanceof Number)
-		{
+		if (o == null) return false;
+		if (o instanceof Number) {
 			return true;
 		}
-		if (o instanceof String)
-		{
-			try
-			{
-				Double.parseDouble((String) o);
-				return true;
-			}
-			catch (NumberFormatException e)
-			{
-				return false;
-			}
+		if (o instanceof String) {
+			return StringUtil.isNumeric(o.toString());
 		}
 		return false;
 	}
@@ -175,15 +119,11 @@ public class BeanUtils
 	 * @param className
 	 * @return
 	 */
-	public static boolean validClass(String className)
-	{
-		try
-		{
+	public static boolean validClass(String className) {
+		try {
 			Class.forName(className);
 			return true;
-		}
-		catch (ClassNotFoundException e)
-		{
+		} catch (ClassNotFoundException e) {
 			 return false;
 		}
 	}
@@ -195,8 +135,7 @@ public class BeanUtils
 	 * @return
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static boolean isInherit(Class cls,Class parentClass)
-	{
+	public static boolean isInherit(Class cls,Class parentClass) {
 		return parentClass.isAssignableFrom(cls);
 	}
 	

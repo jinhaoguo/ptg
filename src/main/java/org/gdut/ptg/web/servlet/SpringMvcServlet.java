@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.gdut.ptg.util.StringUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.DispatcherServlet;
 
 /**
@@ -43,6 +45,8 @@ public class SpringMvcServlet extends DispatcherServlet
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private Logger logger = LoggerFactory.getLogger(SpringMvcServlet.class);
 
 	@Override
 	protected void noHandlerFound(HttpServletRequest request, HttpServletResponse response) throws Exception

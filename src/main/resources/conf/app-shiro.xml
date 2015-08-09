@@ -90,9 +90,9 @@ com.github.zhangkaitao.shiro.chapter12.credentials.RetryLimitHashedCredentialsMa
 		<property name="loginUrl" value="/login.jsp" />
 		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
 		<property name="filters">
-			<util:map>
+			<map>
 				<entry key="authc" value-ref="formAuthenticationFilter" />
-			</util:map>
+			</map>
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
@@ -103,5 +103,5 @@ com.github.zhangkaitao.shiro.chapter12.credentials.RetryLimitHashedCredentialsMa
 				/** = user
 			</value>
 		</property>
-	</bean>&nbsp;
+	</bean>
 </beans>
